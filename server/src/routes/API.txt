@@ -1,0 +1,10 @@
+Supported operations:
+
+    GET /lists
+    GET /lists/:listID
+
+
+    Users:
+    POST /users
+
+    etc
