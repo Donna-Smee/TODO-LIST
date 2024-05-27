@@ -20,19 +20,20 @@ const useUser = () => {
    
                     const userInfo = await axios.get(`/api/users/${tempUser.email}`, {headers});
               
-                    if (userInfo){setUserInfo(userInfo.data);}
+                    if (userInfo){
+                        setUserInfo(userInfo.data);
+                        return;
+                    }
+                    
                 }
-
+                setUserInfo(null);
                 
             }catch (e){
                 console.log(e);
-                return null;
+                setUserInfo(null);
             }
             
         }
-
-
-        
 
         const unsubscribe = onAuthStateChanged(getAuth(), user => {
           
@@ -44,7 +45,10 @@ const useUser = () => {
            
         });
         return unsubscribe;
-    }, []);
+    });
+
+
+    
 
     return {user, isLoading, userInfo};
 }
