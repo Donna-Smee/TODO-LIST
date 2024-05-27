@@ -3,6 +3,7 @@ import mongodb from "mongodb";
 
 const objID = mongodb.ObjectId;
 const Schema = mongoose.Schema;
+import { List } from "./ListModel.js";
 
 const userSchema = Schema({
     id: objID,
