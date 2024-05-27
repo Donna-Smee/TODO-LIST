@@ -17,7 +17,7 @@ const APreviewList = ({listName, items}: props) => {
                 <MdOutlineEdit className="edit-icon"/>
             </div>
   
-            <div>
+            <div className="items-container">
                 {items.map((item, index) => (
                     <Item name={item} checked={false} key={item}></Item>
                     
