@@ -1,25 +1,20 @@
 import "./page.css";
 import useUser from "../hooks/userUser";
-
-
+import APreviewList from "../components/APreviewList";
+import HomeUserInfo from "../components/HomeUserInfo";
+import HomeNewUsers from "../components/HomeNewUsers";
 
 const HomePage = () => {
   const {user, isLoading, userInfo} = useUser();
-
-  
-  
   
 
   return (
     <>
     <div className='page-margin'>HomePage
-      <div>{userInfo ? userInfo.name : "No name"}</div>
-
-      {(user != null) ? <div>{user.email}</div> : <div>{'Email not available'}</div>}
-
-      <br />
       
-      <h3>Number of Lists: {userInfo && userInfo.lists ? userInfo.lists.length : -100}</h3>
+      {user ? <HomeUserInfo></HomeUserInfo> : <HomeNewUsers></HomeNewUsers>}
+
+      
       
     </div>
 
