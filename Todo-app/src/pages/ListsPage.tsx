@@ -1,16 +1,13 @@
 import "./page.css";
 import useUser from "../hooks/userUser";
 import HomeNewUsers from "../components/HomeNewUsers";
-
-
-interface Props {
-  lists: {name: String, items: {name: String, checked: Boolean}[], active: Boolean}[] 
-}
+import CreateAList from "../components/CreateAList";
 
 
 
 
-const ListsPage = ({lists}: Props) => {
+
+const ListsPage = () => {
   const {user, isLoading, userInfo} = useUser();
   
   
@@ -19,12 +16,16 @@ const ListsPage = ({lists}: Props) => {
     <div  className='page-margin'>ListsPage
       {
         user ? 
-        
-        <ul>
-          {lists.map((list, index) =>
-            <p>{`${list.name} is list number ${index}`}</p>
-          )}
-        </ul>
+        <div>
+           <CreateAList></CreateAList>
+         
+        </div>
+       
+        // <ul>
+        //   {lists.map((list, index) =>
+        //     <p>{`${list.name} is list number ${index}`}</p>
+        //   )}
+        // </ul>
       
 
       :

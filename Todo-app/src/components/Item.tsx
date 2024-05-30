@@ -1,21 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./list.css";
 import { RiCheckboxBlankCircleLine, RiCheckboxCircleFill } from "react-icons/ri";
+import useUser from '../hooks/userUser';
+import axios from 'axios';
 
 
 interface Props {
-    name: string,
-    checked: boolean
+    name: String,
+    checked: Boolean
 }
 
 const Item = ({name, checked} : Props) => {
+
   return (
     <div className='item-container'>
         <RiCheckboxBlankCircleLine className='checkbox'/>
         
 
        
-        <label htmlFor={name}>{name}</label>
+        <label>{name}</label>
     </div>
   )
 }

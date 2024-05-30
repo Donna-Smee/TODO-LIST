@@ -33,7 +33,7 @@ function App() {
         <Routes>
 
           <Route  path='/' element={<HomePage></HomePage>} />
-          <Route path='/lists' element={<ListsPage lists={lists}></ListsPage>} />
+          <Route path='/lists' element={<ListsPage></ListsPage>} />
           <Route path='/lists/:listID' element={<ListPage></ListPage>} />
           <Route path='/login' element={<LoginPage></LoginPage>} />
           <Route path='/create-account' element={<CreateAccountPage></CreateAccountPage>} />

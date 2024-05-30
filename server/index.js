@@ -12,6 +12,7 @@ const __dirname = path.dirname(__filename);
 
 // routers
 import userRouter from "./src/routes/user-router.js";
+import listRouter from "./src/routes/list-router.js";
 
 
 // set up firebase admin 
@@ -59,10 +60,9 @@ app.use( async (req, res, next) => {
 });
 
 app.use("/api/users", userRouter);
+app.use("/api/lists", listRouter);
 
-app.get("/", (req, res) => {
-    res.send("hello world!");
-});
+
 
 mongoose.connect(process.env.MONGODBURL)
     .then(() => {
