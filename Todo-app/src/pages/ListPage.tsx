@@ -44,7 +44,7 @@ const ListPage = () => {
     <div className='page-margin'>
       <div className="list-page-container">
         <div className="list-container">
-          <ListComponent listName={listInfo ? listInfo.name : "List Name"} items={listInfo ? listInfo.items : []} listID={listInfo ? listInfo._id : ""}></ListComponent>
+          <ListComponent listName={listInfo ? listInfo.name : "List Name"} items={listInfo ? listInfo.items : []} listID={listInfo ? listInfo._id : ""} onListUpdated={handleListUpdate}></ListComponent>
           
         </div>
         <div className="list-functionality-container">

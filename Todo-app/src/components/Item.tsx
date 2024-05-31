@@ -7,14 +7,20 @@ import axios from 'axios';
 
 interface Props {
     name: String,
-    checked: Boolean
+    checked: Boolean,
+    itemID: String,
+    onCheckClick: (itemID: string) => void
 }
 
-const Item = ({name, checked} : Props) => {
+const Item = ({name, checked, itemID, onCheckClick} : Props) => {
+
+
+
 
   return (
     <div className='item-container'>
-        <RiCheckboxBlankCircleLine className='checkbox'/>
+      {checked ? <RiCheckboxCircleFill className='checkbox' onClick={()  => onCheckClick(itemID)}/> : <RiCheckboxBlankCircleLine className='checkbox' onClick={()  => onCheckClick(itemID)}/> }
+        
         
 
        

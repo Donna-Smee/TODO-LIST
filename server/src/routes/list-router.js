@@ -2,16 +2,20 @@ import express from "express";
 import {sendServerError} from "../error.js";
 import { List } from "../models/ListModel.js";
 import { Item } from "../models/ItemModel.js";
+import { User } from "../models/UserModel.js";
 
 
 const router = express.Router();
 
+router.get("/", [isLoggedIn, getLists]);
 
 router.get("/:listID", [isLoggedIn, getUserEmailForList, verifyUserForList, getList]);
 router.post("/", [isLoggedIn, createList]);
 router.post("/:listID/items", [isLoggedIn, getUserEmailForList, verifyUserForList, addItem]);
 
 router.get("/:listID/items/:itemID", [isLoggedIn, getUserEmailForList, verifyUserForList, getItem]);
+
+router.put("/:listID/items/:itemID/check", [isLoggedIn, getUserEmailForList, verifyUserForList, getCheckedStatus, checkItem]);
 
 async function isLoggedIn(req, res, next){
     if (req.user){
@@ -94,7 +98,6 @@ async function addItem(req, res, next){
         const result = await Item.create(newItem);
         if (result){
             const listResult = await List.findByIdAndUpdate(listID, {$push: {items: result._id}});
-            console.log(listResult);
             const updatedList = await List.findById(listID).populate("items");
           
             res.status(200).send(updatedList);
@@ -124,5 +127,51 @@ async function getItem(req, res, next){
     }
 }
 
+async function getLists(req, res, next){
+    try {
+
+        const {email} = req.user;
+        const result = await List.find({user_email: email}).populate("items");
+        res.status(200).send(result);
+
+    }catch (e){
+        sendServerError(e);
+    }
+}
+
+
+async function getCheckedStatus(req, res, next){
+    try {
+        const {itemID} = req.params;
+        let result = await Item.findById(itemID);
+        if (result){
+            req.itemCheck = result.checked;
+            next();
+            return;
+        }
+        res.status(500).send(null);
+    }catch (e) {
+        sendServerError(e);
+    }
+}
+
+
+async function checkItem(req, res, next){
+    try {
+        const {listID, itemID} = req.params;
+
+        // first update the item checked 
+
+        let itemResult = await Item.findByIdAndUpdate(itemID, {checked: !(req.itemCheck)});
+       
+
+        // then get list and return
+        const result = await List.findById(listID).populate("items");
+        res.status(200).send(result);
+
+    }catch (e){
+        sendServerError(e);
+    }
+}
 
 export default router;
