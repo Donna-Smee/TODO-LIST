@@ -23,7 +23,6 @@ const AddItemComponent = ({listID, onListUpdated} : Props) => {
     const token = user && await user.getIdToken();      
     const headers = token ? {authtoken: token} : {};
     const response = await axios.post(`/api/lists/${listID}/items`, {itemName: itemInput}, {headers});
-    console.log(response.data);
     onListUpdated(response.data);
    
 

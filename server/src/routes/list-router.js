@@ -3,6 +3,7 @@ import {sendServerError} from "../error.js";
 import { List } from "../models/ListModel.js";
 import { Item } from "../models/ItemModel.js";
 import { User } from "../models/UserModel.js";
+import {ObjectId} from "mongoose";
 
 
 const router = express.Router();
@@ -16,6 +17,10 @@ router.post("/:listID/items", [isLoggedIn, getUserEmailForList, verifyUserForLis
 router.get("/:listID/items/:itemID", [isLoggedIn, getUserEmailForList, verifyUserForList, getItem]);
 
 router.put("/:listID/items/:itemID/check", [isLoggedIn, getUserEmailForList, verifyUserForList, getCheckedStatus, checkItem]);
+
+router.delete("/:listID/items/:itemID", [isLoggedIn, getUserEmailForList, verifyUserForList, removeItem]);
+router.delete("/:listID/items", [isLoggedIn, getUserEmailForList, verifyUserForList, clearList]);
+router.delete("/:listID", [isLoggedIn, getUserEmailForList, verifyUserForList, deleteList]);
 
 async function isLoggedIn(req, res, next){
     if (req.user){
@@ -169,6 +174,65 @@ async function checkItem(req, res, next){
         const result = await List.findById(listID).populate("items");
         res.status(200).send(result);
 
+    }catch (e){
+        sendServerError(e);
+    }
+}
+
+async function removeItem(req, res, next){
+    try {
+        const {listID, itemID} = req.params;
+
+        // remove itemID from list items array
+        
+        let listResult = await List.findByIdAndUpdate(listID, {$pull: {items: itemID}});
+        
+        // delete item
+        const removedItem = await Item.findByIdAndDelete(itemID);
+
+        let result = await List.findById(listID).populate("items");
+        
+        res.status(200).send(result);
+
+    }catch (e){
+        sendServerError(e);
+    }
+}
+
+
+
+async function clearList(req, res, next){
+    try {
+        const {listID} = req.params;
+
+        let listItems = await List.findById(listID);
+        listItems = listItems.items;
+
+        for (let item of listItems){
+            await Item.findByIdAndDelete(item);
+        }
+
+        let result = await List.findById(listID).populate("items");
+        res.status(200).send(result);
+
+    }catch (e){
+        sendServerError(e);
+    }
+}
+
+
+async function deleteList(req, res, next){
+    try {
+        const {listID} = req.params;
+        let listItems = await List.findById(listID);
+        listItems = listItems.items;
+
+        for (let item of listItems){
+            await Item.findByIdAndDelete(item);
+        }
+        
+        const result = await List.findByIdAndDelete(listID);
+        res.sendStatus(200);
     }catch (e){
         sendServerError(e);
     }

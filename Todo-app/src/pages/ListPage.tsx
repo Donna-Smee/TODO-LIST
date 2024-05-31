@@ -15,6 +15,18 @@ const ListPage = () => {
   const handleListUpdate = async (updatedListInfo) => {
     setListInfo(updatedListInfo);
   }
+
+  const clearList = async () => {
+    console.log("in here to clear");
+      const token = user && await user.getIdToken();
+      const headers = token ? {authtoken: token} : {};
+      const response = await axios.delete(`/api/lists/${listID}/items`, {headers});
+      if (response){
+        console.log("clear lists");
+        setListInfo(response.data);
+        
+      } 
+  }
   
 
   useEffect(() => {
@@ -51,6 +63,7 @@ const ListPage = () => {
           <AddItemComponent listID={listInfo ? listInfo._id : ""} onListUpdated={handleListUpdate}></AddItemComponent> 
         </div>
       </div>
+      <button onClick={clearList}>Clear List</button>
     </div>
   )
 }
