@@ -10,9 +10,9 @@ const HomePage = () => {
 
   return (
     <>
-    <div className='page-margin'>HomePage
+    <div className='page-margin'>
       
-      {user ? <HomeUserInfo></HomeUserInfo> : <HomeNewUsers></HomeNewUsers>}
+      {<HomeUserInfo></HomeUserInfo>}
 
       
       

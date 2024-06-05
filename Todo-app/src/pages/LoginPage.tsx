@@ -2,7 +2,7 @@ import "./page.css";
 import { Link, useNavigate } from "react-router-dom";
 import {getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
-
+import "./login-create-acc-styles.css"
 
 
 const LoginPage = () => {
@@ -25,23 +25,21 @@ const LoginPage = () => {
   return (
     <div className='page-margin'>
       
-      {error && <p>{error}</p>}
+      <div className="userform-container">
+        {error && <p>{error}</p>}
     
-      <label htmlFor="email">Email </label>
-      <input name="email" type="text" onChange={e => setEmail(e.target.value)}/>
+        
+        <input name="email" type="text" onChange={e => setEmail(e.target.value)} placeholder="Email"/> <br />
 
-      <br /><br />
+        <input name="password" type="password" onChange={e => setPassword(e.target.value)} placeholder="Password"/>
 
-      <label htmlFor="password">Password </label>
-      <input name="password" type="password" onChange={e => setPassword(e.target.value)}/>
+        <br />
+        <button className="userform-button" onClick={logIn}>Log In</button>
 
-      <br /><br />
 
-      <button onClick={logIn}>Log In</button>
-  
-
-      <br />
-      <Link to="/create-account">Don't have an account? Create one here :D</Link>
+        <br />
+        <Link to="/create-account">Don't have an account? Create one here :D</Link>
+      </div>
     </div>
   )
 }

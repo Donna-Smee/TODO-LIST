@@ -8,10 +8,10 @@ const HomeUserInfo = () => {
 
     return (
         <>
-            <div>{userInfo ? userInfo.name : "No name"}</div>
-            {(user != null) ? <div>{user.email}</div> : <div>{'Email not available'}</div>}
-            <br />
-            <h3>Number of Lists: {userInfo && userInfo.lists ? userInfo.lists.length : -100}</h3>
+            <div className="welcome">Welcome <br/> {userInfo ? userInfo.name : "To Do List Apprentice!"}</div>
+            
+
+            
         </>
     )
 }

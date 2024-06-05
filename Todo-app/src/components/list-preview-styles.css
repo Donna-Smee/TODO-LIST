@@ -5,10 +5,11 @@
 }
 
 .preview-list-container {
-    border: 1px black solid;
+ 
     padding: 1em 0em 1em 1em;
-    border-radius: 15px;
+
     margin: 1em;
+    background-color: var(--light);
 
 }
 

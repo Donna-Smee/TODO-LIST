@@ -1,0 +1,30 @@
+.userform-container {
+    border: 4px var(--dark) solid;
+    max-width: 30vw;
+    min-width: fit-content;
+    padding: 2em;
+    text-align: center;
+    background-color: white;
+}
+
+.userform-container input {
+    padding: 0.2em;
+    font-size: 24px;
+    margin-bottom: 1em;
+   
+}
+
+.userform-button {
+    padding: 0.5em 0em;
+    width: 50%;
+    margin-bottom: 2em;
+    background-image: linear-gradient(to right, var(--dark-blue) , var(--pink));
+    border:none;
+    color: var(--light);
+    font-size: larger;
+    border-radius: 25px;
+}
+
+.userform-button:hover {
+    cursor: pointer;
+}
