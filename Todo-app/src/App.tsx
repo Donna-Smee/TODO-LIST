@@ -6,6 +6,7 @@ import ListPage from "./pages/ListPage"
 import LoginPage from "./pages/LoginPage"
 import HomePage from "./pages/HomePage"
 import NavBar from './NavBar.js'
+import { IoReloadCircle } from "react-icons/io5";
 
 
 // temp
@@ -23,6 +24,11 @@ let lists
 
 function App() {
 
+  const reloadPage = () => {
+    window.location.reload();
+
+  }
+
   return (
     <>
       <BrowserRouter>
@@ -39,6 +45,7 @@ function App() {
           <Route path='/create-account' element={<CreateAccountPage></CreateAccountPage>} />
 
         </Routes>
+        <IoReloadCircle className='reload-button' onClick={reloadPage}/>
         </div>
       </BrowserRouter>
     </>

@@ -12,10 +12,6 @@ const NavBar = () => {
   const {user, isLoading, userInfo} = useUser();
   const [showNav, setShowNav] = useState(true);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    console.log(showNav);
-  }, [showNav])
   
 
   return (

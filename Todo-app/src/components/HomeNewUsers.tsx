@@ -9,12 +9,16 @@ const HomeNewUsers = () => {
     <>
    
         <div className="all-preview-lists">
-            <APreviewList listName={"Grocery List"} items={["apples", "banana", "cookies"]}></APreviewList>
-            <APreviewList listName={"Grocery List"} items={["apples", "banana", "cookies"]}></APreviewList>
-            <APreviewList listName={"Grocery List"} items={["apples", "banana", "cookies"]}></APreviewList>
-            <APreviewList listName={"Grocery List"} items={["apples", "banana", "cookies"]}></APreviewList>
-            <APreviewList listName={"Grocery List"} items={["apples", "banana", "cookies"]}></APreviewList>
-            <APreviewList listName={"Grocery List"} items={["apples", "banana", "cookies"]}></APreviewList>
+            <APreviewList listName={"Grocery List"} items={[{name: "cookies", checked: false}, {name: "banana", checked: false}, {name: "ice cream", checked: false}]}></APreviewList>
+            <APreviewList listName={"Grocery List"} items={[{name: "cookies", checked: false}, {name: "banana", checked: false}, {name: "ice cream", checked: false}]}></APreviewList>
+            <APreviewList listName={"Grocery List"} items={[{name: "cookies", checked: false}, {name: "banana", checked: false}, {name: "ice cream", checked: false}]}></APreviewList>
+            <APreviewList listName={"Grocery List"} items={[{name: "cookies", checked: false}, {name: "banana", checked: false}, {name: "ice cream", checked: false}]}></APreviewList>
+            <APreviewList listName={"Grocery List"} items={[{name: "cookies", checked: false}, {name: "banana", checked: false}, {name: "ice cream", checked: false}]}></APreviewList>
+            <APreviewList listName={"Grocery List"} items={[{name: "cookies", checked: false}, {name: "banana", checked: false}, {name: "ice cream", checked: false}]}></APreviewList>
+            <APreviewList listName={"Grocery List"} items={[{name: "cookies", checked: false}, {name: "banana", checked: false}, {name: "ice cream", checked: false}]}></APreviewList>
+            <APreviewList listName={"Grocery List"} items={[{name: "cookies", checked: false}, {name: "banana", checked: false}, {name: "ice cream", checked: false}]}></APreviewList>
+            <APreviewList listName={"Grocery List"} items={[{name: "cookies", checked: false}, {name: "banana", checked: false}, {name: "ice cream", checked: false}]}></APreviewList>
+
         </div>
 
         <button onClick={() => navigate("/create-account")}>GET STARTED!</button>

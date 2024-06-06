@@ -30,7 +30,7 @@ const CreateAList = () => {
 
     return (
     <div className="create-list-container">
-        <h3>Create a new todo list!</h3>
+        <h3>Create a To Do List!</h3>
         <div className="create-list-input-container">
             <input type="text" id="list-name-input" onChange={(event) => setListTitleInput(event.target.value)} value={listTitleInput} placeholder="List Name"/>
             <CgAddR className="create-list-add-button" onClick={() => createList()}/>

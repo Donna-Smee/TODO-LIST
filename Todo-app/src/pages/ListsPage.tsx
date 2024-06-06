@@ -42,16 +42,16 @@ const ListsPage = () => {
   
   return (
     <>
-    <div  className='page-margin'>ListsPage
+    <div  className='page-margin'>
       {
         user ? 
-        <div>
+        <div className="all-lists-page">
  
           <CreateAList></CreateAList>
-          { <ul>
+          { <ul className="all-lists-container">
             {lists.map((list, index) =>
               
-              <APreviewList listName={list.name} items={list.items} listID={list._id} key={list._id}></APreviewList>
+              <APreviewList listName={list.name} items={list.items} listID={list._id} key={list._id} ></APreviewList>
             )}
           </ul> }
          

@@ -8,6 +8,8 @@ const router = express.Router();
 router.get("/:emailParams", [getUser]);
 router.post("/", [createUser]);
 
+router.put("/:emailParams", [isLoggedIn, changeName]);
+
 // checks if the user is logged in, continues to next functionality if so
 async function isLoggedIn(req, res, next){
     if (req.user){
@@ -48,6 +50,25 @@ async function createUser(req, res, next){
 
     } catch (error){
         sendServerError(error, res);
+    }
+}
+
+async function changeName(req, res, next){
+    try {
+        const {emailParams} = req.params;
+        const {email} = req.user;
+        const {newName} = req.body;
+
+        
+        if (emailParams === email){
+            const result = await User.findOneAndUpdate({user_email: emailParams}, {name: newName});
+            res.status(200).send(result);
+        }else { 
+            console.log("Not authorized to change name.");
+            return res.status(401).send(null);
+        }
+    }catch (e){
+        sendServerError(e, res);
     }
 }
 

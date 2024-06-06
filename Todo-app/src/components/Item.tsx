@@ -11,23 +11,25 @@ interface Props {
     checked: Boolean,
     itemID: String,
     onCheckClick: (itemID: string) => void,
-    onDeleteClick: (itemID: string) => void
+    onDeleteClick: (itemID: string) => void,
+    previewOnly: Boolean
 }
 
-const Item = ({name, checked, itemID, onCheckClick, onDeleteClick} : Props) => {
+const Item = ({name, checked, itemID, onCheckClick, onDeleteClick, previewOnly = true} : Props) => {
 
 
 
 
   return (
     <div className='item-container'>
-      {checked ? <RiCheckboxCircleFill className='checkbox' onClick={()  => onCheckClick(itemID)}/> : <RiCheckboxBlankCircleLine className='checkbox' onClick={()  => onCheckClick(itemID)}/> }
+      {checked ? <RiCheckboxCircleFill className={previewOnly ? "checkbox-preview" : "checkbox"} onClick={()  => onCheckClick(itemID)}/> : <RiCheckboxBlankCircleLine className={previewOnly ? "checkbox-preview" : "checkbox"} onClick={()  => onCheckClick(itemID)}/> }
         
         
 
        
-        <label>{name}</label>
-        <FaRegTrashCan onClick={() => onDeleteClick(itemID)}/>
+        <label className='item-string'>{name}</label>
+        {!previewOnly && <FaRegTrashCan onClick={() => onDeleteClick(itemID)}/>}
+        
     </div>
   )
 }

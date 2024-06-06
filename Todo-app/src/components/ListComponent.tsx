@@ -57,7 +57,7 @@ const ListComponent = ({listName, items, listID, onListUpdated}: Props) => {
                 
             <div>
                 
-                {items ? items.map((i, index) => (<Item itemID={i._id} onCheckClick={handleCheckClick} onDeleteClick={handleDeleteClick} name={i.name} checked={i.checked} key={index}></Item>)) : <div>No items yet</div>}
+                {items ? items.map((i, index) => (<Item itemID={i._id} onCheckClick={handleCheckClick} onDeleteClick={handleDeleteClick} name={i.name} checked={i.checked} key={index} previewOnly={false}></Item>)) : <div>No items yet</div>}
                 
             </div>
             

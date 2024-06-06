@@ -6,3 +6,15 @@
     align-items: center;
 }
 
+.all-lists-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.all-lists-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

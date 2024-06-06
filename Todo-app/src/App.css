@@ -5,6 +5,7 @@
     --light-grey: #e9e9e9d0;
     --pink: #D8315B;
     --dark: #1E1B18;
+    --lighter-blue: #67bfff;
 }
 
 body {
@@ -22,14 +23,14 @@ body {
 }
 
 .welcome {
-    font-size: 3vw;
+    font-size: 3em;
     font-weight: 600;
     background-color: var(--dark);
-    color: var(--light);
-    padding: 0.5em 1em;
-    width: 50%;
+    color: var(--pink);
+    padding: 1em 2em;
+    width: 40%;
+    min-width: fit-content;
     border-radius: 18px 80px;
-    
 }
 
 
@@ -54,4 +55,83 @@ body {
     1px 22px 10px rgba(16,16,16,0.2),
     1px 25px 35px rgba(16,16,16,0.2),
     1px 30px 60px rgba(16,16,16,0.4);
+}
+
+
+.change-name-container {
+    width: fit-content;
+    display: flex;
+    margin-top: 2em;
+
+}
+
+#change-name-input {
+    outline: none;
+    padding: 0.5em;
+    font-size: 16px;
+}
+
+.change-name-button {
+    background-color: var(--pink);
+    color: var(--light);
+    border: none;
+    padding: 0.5em 1.5em;
+    margin-left: 1em;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.change-name-button:hover {
+    cursor: pointer;
+    color: var(--dark);
+}
+
+.user-info-container {
+    margin-top: 2em;
+    padding: 1em 0;
+    border-radius: 20px;
+    font-size: 20px;
+    color: var(--light);
+    font-weight: 200;
+    
+}
+
+.user-info-container h4 {
+    border-bottom: 2px var(--pink) solid;
+    border-top: 2px var(--pink) solid;
+    padding: 0.4em 0;
+    width: fit-content;
+    color: var(--light-blue);
+    font-weight: 700;
+}
+
+.user-info-container div {
+    margin-bottom: 0.3em;
+}
+
+
+.reload-button {
+    color: var(--pink);
+    font-size: 3em;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 1em;
+}
+
+.reload-button:hover {
+    cursor: pointer;
+    color: var(--light-blue);
+    animation:spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+    50% {transform: rotate(180deg);}
+    100% {transform: rotate(360deg);}
+  }
+
+.disabled {
+    
+    pointer-events: none;  
+    background-color:#f8b4c5;
 }

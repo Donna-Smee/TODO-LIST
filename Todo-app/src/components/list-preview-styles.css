@@ -5,12 +5,12 @@
 }
 
 .preview-list-container {
- 
     padding: 1em 0em 1em 1em;
-
     margin: 1em;
-    background-color: var(--light);
-
+    background-color: var(--dark);
+    width: 350px;
+    color: var(--light);
+    border-radius: 14px;
 }
 
 .list-preview-container-header {
@@ -19,6 +19,8 @@
     justify-content:space-between;
     margin: 1em;
     width: 80%;
+    color: var(--pink);
+    text-transform: uppercase;
 }
 
 
@@ -35,6 +37,7 @@
 
 .items-container {
     padding-right: 7em;
+    font-size: smaller;
 }
 
 

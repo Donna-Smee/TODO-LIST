@@ -1,29 +1,39 @@
 .create-list-container {
-    border: 1px black solid;
-    padding: 1em;
-    margin-top: 1em;
-    border-radius: 12px;
-    min-width: 25vw;
+    padding: 2em 1em;
+    margin: 2em 0em;
+    border-radius: 14px;
+    width: 340px;
+    min-width: fit-content;
     text-align: center;
+    background-color: var(--dark);
+    color: var(--lighter-blue);
+    text-transform: uppercase;
 }
+  
 
 #list-name-input {
-    padding: 0.1em;
-    font-size: 2em;
+    padding: 0.3em;
+    font-size: 1.2em;
+    outline: none;
+    border: none;
 }
 
 .create-list-input-container {
     display: flex;
-    flex-direction: row;
     justify-content: center;
-    margin: 1em;
+    align-items: center;
+    margin-top: 1em;
 }
 
 .create-list-add-button {
-    font-size: 3em;
+    font-size: 2.5em;
+    margin-left: 0.2em;
+    transition: 0.4s;
+
 }
 
 
 .create-list-add-button:hover {
     cursor: pointer;
+    color: var(--pink);
 }      
