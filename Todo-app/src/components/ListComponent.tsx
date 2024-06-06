@@ -49,13 +49,13 @@ const ListComponent = ({listName, items, listID, onListUpdated}: Props) => {
 
   return (
     <>
-        <div>
-            <div className="list-preview-container-header">
+        <div className="list-component-container">
+            <div className="list-container-header">
                 <h3>{listName}</h3>
-                <FaRegTrashCan onClick={deleteList}/>
+                <FaRegTrashCan className="list-delete-button" onClick={deleteList}/>
             </div>
                 
-            <div>
+            <div className="all-items-container">
                 
                 {items ? items.map((i, index) => (<Item itemID={i._id} onCheckClick={handleCheckClick} onDeleteClick={handleDeleteClick} name={i.name} checked={i.checked} key={index} previewOnly={false}></Item>)) : <div>No items yet</div>}
                 

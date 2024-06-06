@@ -6,6 +6,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import AddItemComponent from "../components/AddItemComponent";
 import ListComponent from "../components/ListComponent";
+import { MdDeleteSweep } from "react-icons/md";
+
 
 const ListPage = () => {
   const [listInfo, setListInfo] = useState(null);
@@ -17,12 +19,11 @@ const ListPage = () => {
   }
 
   const clearList = async () => {
-    console.log("in here to clear");
+
       const token = user && await user.getIdToken();
       const headers = token ? {authtoken: token} : {};
       const response = await axios.delete(`/api/lists/${listID}/items`, {headers});
       if (response){
-        console.log("clear lists");
         setListInfo(response.data);
         
       } 
@@ -37,7 +38,6 @@ const ListPage = () => {
       const headers = token ? {authtoken: token} : {};
       const response = await axios.get(`/api/lists/${listID}`, {headers});
       if (response){
-        console.log("inside");
         setListInfo(response.data);
         
       } 
@@ -62,8 +62,9 @@ const ListPage = () => {
         <div className="list-functionality-container">
           <AddItemComponent listID={listInfo ? listInfo._id : ""} onListUpdated={handleListUpdate}></AddItemComponent> 
         </div>
+        <button className="clear-list-button" onClick={clearList}><MdDeleteSweep /> Clear List</button>
       </div>
-      <button onClick={clearList}>Clear List</button>
+      
     </div>
   )
 }

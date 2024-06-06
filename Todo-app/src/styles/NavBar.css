@@ -24,7 +24,7 @@ nav {
     min-width: 10vw; 
     position: fixed;
     border-left: 1em var(--dark) solid;
-  
+    
 }
 
 .nav-link-container {

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import useUser from "../hooks/userUser";
 import { Navigate, useNavigate } from "react-router-dom";
+import "./list.css";
 
 interface Props {
   listID: String,
@@ -24,14 +25,14 @@ const AddItemComponent = ({listID, onListUpdated} : Props) => {
     const headers = token ? {authtoken: token} : {};
     const response = await axios.post(`/api/lists/${listID}/items`, {itemName: itemInput}, {headers});
     onListUpdated(response.data);
-   
+    setItemInput("");
 
   }
 
   return (
     <div>
-        <input type="text" placeholder='Add item to list' value={itemInput} onChange={(e) => setItemInput(e.target.value)}/>
-        <button onClick={addItemToList} >Add</button>
+        <input className="add-item-input" type="text" placeholder='Add item to list' value={itemInput} onChange={(e) => setItemInput(e.target.value)}/>
+        <button className="add-item-button" onClick={addItemToList} >Add</button>
     </div>
   )
 }

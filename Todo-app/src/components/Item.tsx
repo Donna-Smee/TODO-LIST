@@ -22,13 +22,13 @@ const Item = ({name, checked, itemID, onCheckClick, onDeleteClick, previewOnly =
 
   return (
     <div className='item-container'>
-      {checked ? <RiCheckboxCircleFill className={previewOnly ? "checkbox-preview" : "checkbox"} onClick={()  => onCheckClick(itemID)}/> : <RiCheckboxBlankCircleLine className={previewOnly ? "checkbox-preview" : "checkbox"} onClick={()  => onCheckClick(itemID)}/> }
+      {checked ? <RiCheckboxCircleFill className={previewOnly ? "checkbox-preview checked" : "checkbox checked"} onClick={()  => onCheckClick(itemID)}/> : <RiCheckboxBlankCircleLine className={previewOnly ? "checkbox-preview" : "checkbox"} onClick={()  => onCheckClick(itemID)}/> }
         
         
 
        
         <label className='item-string'>{name}</label>
-        {!previewOnly && <FaRegTrashCan onClick={() => onDeleteClick(itemID)}/>}
+        {!previewOnly && <FaRegTrashCan className='item-trash' onClick={() => onDeleteClick(itemID)}/>}
         
     </div>
   )
