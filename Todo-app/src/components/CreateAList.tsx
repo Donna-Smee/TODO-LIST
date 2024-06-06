@@ -13,6 +13,7 @@ const CreateAList = () => {
     const navigate = useNavigate();
 
     const createList = async () => {
+        if (listTitleInput === ""){return;}
 
         const token = user && await user.getIdToken();
         const headers = token ? {authtoken: token} : {};

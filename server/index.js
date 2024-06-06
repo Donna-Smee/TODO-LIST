@@ -30,7 +30,7 @@ admin.initializeApp({
 const app = express();
 app.use(express.json());
 
-const PORT =  8000;
+const PORT = process.env.PORT || 8000;
 
 // express middleware 
 // - loads user's info whenever we receive a request
